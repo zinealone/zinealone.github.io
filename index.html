@@ -5,6 +5,9 @@
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 		<meta charset="utf-8">
 		<meta name="robots" content="noindex">
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
 		<link href="content/bootstrap/bootstrap.min.css" rel="stylesheet">
 		<link href="content/site.css" rel="stylesheet">
 		<script src="scripts/externalLib/jquery-1.11.1.min.js"></script>
@@ -32,6 +35,7 @@
 				<a href="#" class="list-group-item"><span class="badge">1</span>Discovery</a>
 				<a href="#" class="list-group-item">About</a>
 			</div>
+			<img src="images/slideme.png"/>
 		</nav>
 		<!--Navigation panel end-->
 		<!--Main panel begin-->
@@ -42,10 +46,10 @@
 		</div>
 		<!--head bar end-->
 		<!--content begin-->
-		<div class="container-fluid" >
+		<div class="container-fluid" style="margin-top:45px">
 			<div class="row">
 				<div class="col-sm-6">
-					<div class="panel panel-info" style="margin-top:45px">
+					<div class="panel panel-info">
 						<div class="panel-heading">
 							<div class="input-group">
 								<input id="address" type="text" class="form-control" placeholder="Search for...">
@@ -71,14 +75,13 @@
 			</div>
 		</div>
 		<!--content end-->
-		
 		</main>
+		<div class="ssm-overlay"></div>
 		<!--Main panel end-->
 		<script>
 			$(document).ready(function() {
 				$('nav').slideAndSwipe();
 			});
-
 			function initMap() {
 				var map = new Map();
 				map.init('map');
@@ -92,7 +95,6 @@
 					performSearch(map);
 				});
 			}
-
 			function performSearch(map) {
 				map.clearAllMarkers();
 				var address = $('#address').val();
@@ -100,7 +102,6 @@
 					map.searchByText(address, '5000', renderAddress);
 				}
 			}
-
 			function renderAddress(places) {
 				if (places.length > 0) {
 					var addlist = $('#addressList');

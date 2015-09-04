@@ -1,8 +1,3 @@
-function initMap() {
-	var map = new map();
-	map.init();
-}
-
 function Map() {
 	var infoWindow;
 	var markers = [];
