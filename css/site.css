@@ -1,0 +1,40 @@
+﻿/* navigation */
+nav {
+    height: 100%;
+    width: 280px;
+    background-color: #1CB495!important;
+    left: 0;
+    top: 0;
+    z-index: 5;
+    position: fixed;
+    overflow-y: auto;
+    overflow-x: visible;
+    transform: translate(-280px,0);
+}
+/* overlay layer */
+.ssm-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.4);
+    display: none;
+    z-index: 4;
+}
+
+.header-bar {
+    position: fixed;
+    height: 43px;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+    background-color: #EDF1F2;
+}
+.map-small {
+ height: 300px;
+}
+.context-wrap{
+    margin-top:45px;
+}
+

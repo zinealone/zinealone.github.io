@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Go Go</title>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<meta charset="utf-8">
+		<meta name="robots" content="noindex">
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/site.css" rel="stylesheet">
+		<script src="externalLib/jquery-1.11.1.min.js"></script>
+		<script src="externalLib/bootstrap.min.js"></script>
+		<script src="externalLib/angular.min.js"></script>
+		<script src="externalLib/jquery.slideandswipe.min.js"></script>
+		<script src="externalLib/jquery.touchSwipe.min.js"></script>
+		<script src="externalLib/angular-route.min.js"></script>
+	</head>
+	<body>
+		<!--Navigation panel begin-->
+		<nav>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-8">
+						<img src="images/avartar.png" height="42" width="42"/>
+					</div>
+					<div class="col-xs-4 pull-right">
+						Welcome
+					</div>
+				</div>
+			</div>
+			<div class="list-group">
+				<a href="#" class="list-group-item ">Home</a>
+				<a href="#" class="list-group-item"><span class="badge">1</span>Discovery</a>
+				<a href="#" class="list-group-item">About</a>
+			</div>
+			<img src="images/slideme.png"/>
+		</nav>
+		<!--Navigation panel end-->
+		<!--Main panel begin-->
+		<main>
+		<!--head bar begin-->
+		<div class="header-bar" >
+			<img src="images/toggle.png" class="ssm-open-nav" height="40" width="40">
+		</div>
+		<!--head bar end-->
+		<!--content begin-->
+		<div class="context-wrap">
+			<div data-ng-view></div>
+		</div>
+		
+		<!--content end-->
+		</main>
+		<div class="ssm-overlay"></div>
+		<!--Main panel end-->
+		<script>
+			$(document).ready(function() {
+				$('nav').slideAndSwipe();
+			});
+		</script>
+	</body>
+</html>
