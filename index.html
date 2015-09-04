@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Go Go</title>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<meta charset="utf-8">
+		<meta name="robots" content="noindex">
+		<link href="content/bootstrap/bootstrap.min.css" rel="stylesheet">
+		<link href="content/site.css" rel="stylesheet">
+		<script src="scripts/externalLib/jquery-1.11.1.min.js"></script>
+		<script src="scripts/externalLib/bootstrap.min.js"></script>
+		<script src="scripts/externalLib/angular.min.js"></script>
+		<script src="scripts/externalLib/jquery.slideandswipe.min.js"></script>
+		<script src="scripts/externalLib/jquery.touchSwipe.min.js"></script>
+		<script src="scripts/app/map.js"></script>
+	</head>
+	<body>
+		<!--Navigation panel begin-->
+		<nav>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-8">
+						<img src="images/avartar.png" height="42" width="42"/>
+					</div>
+					<div class="col-xs-4 pull-right">
+						Welcome
+					</div>
+				</div>
+			</div>
+			<div class="list-group">
+				<a href="#" class="list-group-item ">Home</a>
+				<a href="#" class="list-group-item"><span class="badge">1</span>Discovery</a>
+				<a href="#" class="list-group-item">About</a>
+			</div>
+		</nav>
+		<!--Navigation panel end-->
+		<!--Main panel begin-->
+		<main>
+		<!--head bar begin-->
+		<div class="header-bar" >
+			<img src="images/toggle.png" class="ssm-open-nav" height="40" width="40">
+		</div>
+		<!--head bar end-->
+		<!--content begin-->
+		<div class="container-fluid" style="margin-top:45px">
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							<div class="input-group">
+								<input id="address" type="text" class="form-control" placeholder="Search for...">
+								<span class="input-group-btn">
+									<button id="btnSearch" class="btn btn-primary" type="button">Go!</button>
+								</span>
+							</div>
+						</div>
+						<div class="panel-body">
+							<div id="map">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="panel panel-info">
+						<div class="panel-heading">Address List</div>
+						<div class="panel-body">
+							<div id="addressList"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--content end-->
+		
+		</main>
+		<!--Main panel end-->
+		<script>
+			$(document).ready(function() {
+				$('nav').slideAndSwipe();
+			});
+
+			function initMap() {
+				var map = new Map();
+				map.init('map');
+				$('#address').keypress(function(e) {
+					if (e.which == '13') {
+						performSearch(map);
+						$('#address').blur();
+					}
+				});
+				$('#btnSearch').bind('click', function() {
+					performSearch(map);
+				});
+			}
+
+			function performSearch(map) {
+				map.clearAllMarkers();
+				var address = $('#address').val();
+				if (address !== "") {
+					map.searchByText(address, '5000', renderAddress);
+				}
+			}
+
+			function renderAddress(places) {
+				if (places.length > 0) {
+					var addlist = $('#addressList');
+					addlist.empty();
+					for (var i = 0; i < places.length; i++) {
+						addlist.append(" <a href='#' class='list-group-item '>" + '[' + places[i].name + ']    ' + places[i].address + "</a>");
+					}
+				}
+			}
+		</script>
+		<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap" async defer>
+		</script>
+	</body>
+</html>
